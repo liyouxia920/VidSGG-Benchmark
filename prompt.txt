@@ -1,0 +1,58 @@
+v1.0
+You are provided with a series of video frames and detected objects in each frame. Each frame includes an image (accessible via URI) and a list of detected objects. Your task is to analyze these frames and generate a detailed scene graph description in JSON format, including objects and their relationships.
+
+Use the object categories, their spatial positions (bounding boxes), and the visual information in the provided images (use the URIs to access the images) to infer possible relationships. The output must match the input format expected by the evaluation script.
+
+**Important Instructions:**
+- **Use the 'id' fields provided in the input objects exactly as they are. Do not modify or change the IDs.**
+- **The 'predicate' labels in the relationships must be chosen exactly from the provided lists of relationships. Do not use any other predicates.**
+- **The output must be valid JSON that can be parsed programmatically, and should not include any additional explanations or text.**
+
+**Input:**
+- Frames: A list of frames with their IDs, image URIs, and detected objects.
+```json
+{frame_details_json}
+
+	•	Relationships should be in the following format:
+	•	“subject_id”: ID of the subject object (from the “id” field)
+	•	“object_id”: ID of the object (from the “id” field)
+	•	“predicate”: the relationship label (choose from the following categories)
+	•	Attention Relationships: {AG_dataset.attention_relationships}
+	•	Spatial Relationships: {AG_dataset.spatial_relationships}
+	•	Contacting Relationships: {AG_dataset.contacting_relationships}
+
+Example:
+If a person is holding a broom, the relationship could be:
+
+{
+    "subject_id": person_id,
+    "object_id": broom_id,
+    "predicate": "holding"
+}
+
+Try to infer as many different types of relationships as possible, including:
+	•	Spatial relationships (e.g., “above”, “beneath”, “behind”, “in front of”)
+	•	Contacting relationships (e.g., “holding”, “touching”, “sitting on”)
+
+Output Format:
+
+{
+    "objects": [
+        {
+            "id": int,
+            "name": str,
+            "bbox": [float, float, float, float]
+        }
+        // Include all objects exactly as provided in the input
+    ],
+    "relationships": [
+        {
+            "subject_id": int,
+            "object_id": int,
+            "predicate": str
+        }
+        // Include inferred relationships between objects
+    ]
+}
+
+Please provide the output in the above JSON format.
