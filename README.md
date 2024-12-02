@@ -27,7 +27,7 @@
    ```
 
 5. ```
-   pip install -r requirements. txt
+   pip install -r requirements.txt
    ```
 
 6. Use the true API Key in `test.py`:
