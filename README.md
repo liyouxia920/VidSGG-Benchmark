@@ -66,7 +66,7 @@
        |-- evaluation_recall.py
        |-- fpn
        |-- object_detector.py
-   		|-- ults
+       |-- ults
    |-- test.py
    |-- weights
        |-- groundingdino_swint_ogc.pth
