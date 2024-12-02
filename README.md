@@ -1,6 +1,6 @@
 # README
 
-1. Download the dataset  [Action Genome](https://www.actiongenome.org/#download) to put it in to the folder "action_genome".
+1. Download the dataset  [Action Genome](https://github.com/JingweiJ/ActionGenome) to put it in to the folder "action_genome".
 
    ```
    |-- action_genome
